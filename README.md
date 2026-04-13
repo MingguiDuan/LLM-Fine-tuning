@@ -1,10 +1,11 @@
 # LLM 微调技术笔记（基于 32GB 显存场景，解决 NaN loss 问题
-LLM Fine-Tuning Technical Notes (Based on 32GB VRAM Scenario, Solving NaN Loss Issue)
+# LLM Fine-Tuning Technical Notes (Based on 32GB VRAM Scenario, Solving NaN Loss Issue)
 
 # 一、背景与核心问题
 I. Background and Core Issues
 
 场景：使用 32GB 显存 GPU，尝试微调 Qwen3-8B 模型，遇到两个核心问题：① 显存不足，无法完成微调；② 训练过程中出现 NaN loss，训练中断。
+
 Scenario: When attempting to fine-tune the Qwen3-8B model using a GPU with 32GB VRAM, two core issues are encountered: ① Insufficient VRAM to complete fine-tuning; ② NaN loss occurs during training, causing training interruption.
 
 核心需求：在 32GB 显存限制下，成功微调 Qwen3-8B 模型，解决 NaN loss 问题，确保训练稳定。| Core Requirement: Successfully fine-tune the Qwen3-8B model under the 32GB VRAM limit, solve the NaN loss issue, and ensure stable training.
