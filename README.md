@@ -123,7 +123,7 @@
 **通俗解释**：训练时“不存所有中间数据，只存关键数据”，省显存但训练速度会稍慢一点。| **Popular Explanation**: "Do not store all intermediate data, only key data" during training, which saves VRAM but slows down the training speed a little.
      
 
-# 三、显存不足问题的解决方案（Paolo 推荐方案）| III. Solutions to Insufficient VRAM (Paolo's Recommended Plan)
+# 三、显存不足问题的解决方案        |        III. Solutions to Insufficient VRAM
 
 ## 3.1 核心结论 | 3.1 Core Conclusion
 
@@ -151,7 +151,7 @@
 
 - 两种精度冲突，导致数值过小（超出 16bit 精度范围），出现下溢出，最终计算出 NaN loss。| The two precisions conflict, causing the value to be too small (exceeding the 16bit precision range), resulting in underflow and finally calculating NaN loss.
 
-## 4.2 解决方案（Paolo 推荐，已验证可行）| 4.2 Solutions (Paolo's Recommended, Verified Feasible)
+## 4.2 解决方案 | 4.2 Solutions
 
 1. **移除手动精度转换**：删除代码中所有 `.float()` 强制转换操作（如 `vit_feat = vit_out.last_hidden_state[:, 0, :].float()` → 改为 `vit_feat = vit_out.last_hidden_state[:, 0, :]`）。| **Remove manual precision conversion**: Delete all `.float()` forced conversion operations in the code (e.g., `vit_feat = vit_out.last_hidden_state[:, 0, :].float()` → changed to `vit_feat = vit_out.last_hidden_state[:, 0, :]`).
 
